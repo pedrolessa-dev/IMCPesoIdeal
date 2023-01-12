@@ -73,7 +73,5 @@ public class Relatorio {
 		}else
 			System.out.println("Peso ideal: "+pesoIdealF);
 	}
-		
-
 	}
 }

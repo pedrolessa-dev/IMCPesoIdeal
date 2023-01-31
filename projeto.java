@@ -5,8 +5,8 @@ public class Relatorio {
 	
 	public static void main(String[] args) {
 	
-	String nome;
-	int anoNasc,ano,genero,idadeResultado,loop=0;
+	String nome,genero;
+	int anoNasc,ano,idadeResultado,loop=0;
 	float altura,peso,imc,pesoIdealM,pesoIdealF;
 	LocalDate anoAtual = LocalDate.now();
 	Scanner teclado = new Scanner(System.in);
@@ -14,29 +14,32 @@ public class Relatorio {
 	System.out.println("Digite o nome do seu paciente:");
 	nome=teclado.nextLine();
 	while (loop<1) {
-		System.out.println("Escolha o gênero do seu paciente");
-		System.out.println("========================");
-		System.out.println("1 - Masculino");
-		System.out.println("2 - Feminino");
-		System.out.println("========================");
-		System.out.println("Digite o número da opção:");
-		genero=teclado.nextInt();
+		System.out.println("Qual o gênero do seu paciente? Digite (M) para masculino ou (F) para feminino:");
+		genero=teclado.nextLine();
+		String generoRegistrado=genero;
+		if(genero.equals(generoRegistrado)) {
 		switch(genero) {
-		case 1:
-			genero=1;
+		case "M":
+			genero="M";
 			loop++;
 			break;
-		case 2:
-			genero=2;
+		case "F":
+			genero="F";
 			loop++;
 			break;
 		default:
-			System.out.println("Opção inválida...");
+			System.out.println("Opção inválida");
 			loop=0;
-			break;
+			continue;
+		}
 		}
 		System.out.println("Em que ano seu paciente nasceu?");
 		anoNasc=teclado.nextInt();
+		while(anoNasc>ano) {
+			System.out.println("Opção inválida. Digite um ano já existente");
+			anoNasc=teclado.nextInt();
+			continue;
+		}
 		System.out.println("Digite a altura do seu paciente:");
 		altura=teclado.nextFloat();
 		System.out.println("Digite o peso do seu paciente:");
@@ -46,7 +49,7 @@ public class Relatorio {
 		pesoIdealM=72.7f*altura-58;
 		pesoIdealF=62.1f*altura-44.7f;
 		System.out.println("\nNome do paciente: "+nome);
-		if (genero<=1) {
+		if (genero=="M") {
 			System.out.println("Gênero: Masculino");
 		}else
 			System.out.println("Gênero: Feminino");
@@ -68,10 +71,10 @@ public class Relatorio {
 			System.out.println("IMC: "+imc+" - Obesidade II (severa)");
 		}else 
 			System.out.println("IMC: "+imc+" - Obesidade III (mórbida)");
-		if (genero<=1) {
-			System.out.println("Peso ideal: "+pesoIdealM);
+		if (genero=="M") {
+			System.out.println("Peso ideal: "+pesoIdealM+"kg");
 		}else
-			System.out.println("Peso ideal: "+pesoIdealF);
+			System.out.println("Peso ideal: "+pesoIdealF+"kg");
 	}
 	}
 }

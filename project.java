@@ -76,6 +76,7 @@ public class Relatorio {
 				System.out.println("Peso ideal: " + pesoIdealM + "kg");
 			} else
 				System.out.println("Peso ideal: " + pesoIdealF + "kg");
+			teclado.close();
 		}
 	}
 }
